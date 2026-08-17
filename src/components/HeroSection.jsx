@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import "../styles/hero-section.css";
 
-/* Each slide has a desktop `image` and a `mobileImage`.
-   📱 Put your mobile-framed images in mobileImage (portrait-friendly crops).
-   Leave mobileImage out / same as image to reuse the desktop one on mobile. */
+
 const SLIDES = [
   {
     image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786947865/ChatGPT_Image_Aug_17_2026_09_24_10_AM_simvop.png",
@@ -105,7 +103,7 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.p className="hero__desc" variants={item}>
-            High-performance printing solutions designed for modern businesses,
+            High-performance Ricoh printers designed for modern businesses,
             offices and creative environments.
           </motion.p>
 
