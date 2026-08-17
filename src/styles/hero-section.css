@@ -1,0 +1,247 @@
+/* Uses the shared :root tokens (index.css / Navbar.css) */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--c-bg); /* fallback before the images load */
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Background carousel (the images ARE the slideshow) ---------- */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-bg); /* desktop image (set inline per slide) */
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+/* Light wash on the left so dark text stays readable over any image.
+   Delete this rule if your images already have empty light space on the left. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.4) 28%,
+    rgba(255, 255, 255, 0) 58%
+  );
+}
+
+/* ---------- Overlaid copy (left) ---------- */
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 clamp(16px, 4vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero__copy {
+  max-width: 480px;
+}
+.hero__badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--c-white);
+  color: var(--c-pink);
+  border: 1px solid #ffd9ec;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 14px rgba(229, 0, 125, 0.1);
+}
+.hero__title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin: 0 0 20px;
+}
+.hero__desc {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--c-muted);
+  margin: 0 0 32px;
+  max-width: 420px;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease;
+}
+.hero__btn--primary {
+  background: var(--c-blue);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 174, 239, 0.32);
+}
+.hero__btn--primary:hover {
+  background: var(--c-blue-dark);
+  transform: translateY(-2px);
+}
+.hero__btn--primary svg {
+  transition: transform 0.2s ease;
+}
+.hero__btn--primary:hover svg {
+  transform: translateX(4px);
+}
+/* translucent fill so the ghost button reads over a photo background */
+.hero__btn--ghost {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--c-ink);
+  border: 1.5px solid #d8dde5;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.hero__btn--ghost:hover {
+  border-color: var(--c-pink);
+  color: var(--c-pink);
+}
+.hero__meta {
+  min-height: 24px;
+}
+.hero__meta-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.hero__meta-name {
+  font-weight: 700;
+  color: var(--c-ink);
+  font-size: 1rem;
+}
+.hero__meta-price {
+  color: var(--c-muted);
+  font-size: 0.92rem;
+}
+
+/* ---------- Slide dots: right edge, vertically centered ---------- */
+.hero__dots {
+  position: absolute;
+  right: clamp(14px, 3vw, 34px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.hero__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(11, 13, 18, 0.28);
+  cursor: pointer;
+  transition: height 0.25s ease, background 0.25s ease;
+}
+.hero__dot:hover {
+  background: rgba(11, 13, 18, 0.55);
+}
+.hero__dot.is-active {
+  height: 22px; /* active dot stretches into a vertical pill */
+  background: var(--c-blue);
+}
+
+/* ---------- Quick links (bottom-left) ---------- */
+.hero__quicklinks {
+  position: absolute;
+  left: clamp(16px, 4vw, 40px);
+  bottom: 24px;
+  z-index: 3;
+  display: flex;
+  gap: 24px;
+}
+.hero__quicklinks a {
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.hero__quicklinks a:hover {
+  color: var(--c-ink);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .hero {
+    align-items: flex-start;
+    padding-top: clamp(36px, 11vw, 64px);
+  }
+  /* Use the dedicated mobile image on small screens */
+  .hero__slide {
+    background-image: var(--hero-bg-mobile);
+    background-position: center;
+  }
+  .hero__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.5) 32%,
+      rgba(255, 255, 255, 0) 66%
+    );
+  }
+  .hero__copy {
+    max-width: 100%;
+  }
+  .hero__dots {
+    right: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero__btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero__quicklinks {
+    gap: 14px;
+    bottom: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__btn,
+  .hero__dot,
+  .hero__quicklinks a {
+    transition: none;
+  }
+}

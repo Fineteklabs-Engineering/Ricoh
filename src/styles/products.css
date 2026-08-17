@@ -1,0 +1,209 @@
+/* Uses the shared :root tokens (index.css / Navbar.css) */
+
+.products {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #f1f9fe; /* very light tint of --c-blue (#00aeef) */
+  padding: clamp(56px, 8vw, 96px) 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+.products__inner {
+  width: 100%;
+  padding: 0 clamp(48px, 10vw, 120px); /* increased left/right padding */
+}
+
+/* ---------- Header + controls ---------- */
+.products__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+.products__eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-blue);
+  margin: 0 0 8px;
+}
+.products__title {
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin: 0;
+}
+.products__nav {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.products__arrow {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: 50%;
+  color: var(--c-ink);
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.products__arrow:hover:not(:disabled) {
+  background: var(--c-blue);
+  color: #fff;
+  border-color: var(--c-blue);
+}
+.products__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* ---------- Card track ---------- */
+.products__track {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: clamp(16px, 4vw, 40px);
+  padding-bottom: 10px; /* breathing room for card shadow */
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+.products__track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari — arrows + swipe drive it instead */
+}
+
+/* ---------- Card ---------- */
+.products__card {
+  flex: 0 0 clamp(260px, 28vw, 320px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.products__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+.products__card-img {
+  position: relative; /* anchors the Add to Cart button */
+  height: clamp(240px, 28vw, 300px);
+  padding: 22px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+.products__card-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Pink Add to Cart — hidden until the card is hovered */
+.products__card-cart {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translate(-50%, 12px);
+  padding: 12px 26px;
+  background: var(--c-pink);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 10px 24px rgba(229, 0, 125, 0.4);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+}
+.products__card:hover .products__card-cart {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+.products__card-cart:hover {
+  background: var(--c-pink-dark);
+}
+
+/* First card shows the button by default — hints that the others reveal it on hover */
+.products__card--peek .products__card-cart {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+/* Touch devices have no hover — keep the button visible so it's usable */
+@media (hover: none) {
+  .products__card-cart {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+}
+
+.products__card-body {
+  flex: 1;
+  background: #f4f5f7; /* grey info band, like your example */
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.products__card-cat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-pink);
+}
+.products__card-name {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--c-ink);
+  /* clamp to 2 lines so uneven titles keep the cards even */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.products__card-price {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-ink);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .products__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 480px) {
+  .products__arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+}

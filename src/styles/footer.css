@@ -1,0 +1,154 @@
+/* Uses the shared :root tokens (index.css / Navbar.css) */
+
+.footer {
+  /* soft blue-tinted band — not white; contrasts the dark CTA above */
+  background: #eaf3fb;
+  border-top: 1px solid var(--c-line);
+  padding: clamp(48px, 7vw, 80px) clamp(16px, 4vw, 40px)
+    clamp(28px, 4vw, 40px);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+.footer__inner {
+  width: 100%; 
+}
+
+/* ---------- Top: brand + links ---------- */
+.footer__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.footer__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.footer__logo__img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+.footer__logo-dot {
+  color: var(--c-pink);
+}
+.footer__tagline {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2vw, 32px);
+}
+.footer__links a {
+  font-size: 0.95rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer__links a:hover {
+  color: var(--c-ink);
+}
+
+/* ---------- Divider ---------- */
+.footer__divider {
+  height: 1px;
+  background: var(--c-line);
+  margin: clamp(28px, 4vw, 44px) 0 clamp(20px, 3vw, 28px);
+}
+
+/* ---------- Contact section ---------- */
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.footer__contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+.footer__contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-blue);
+}
+.footer__contact-value {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer__contact-value:hover {
+  color: var(--c-ink);
+}
+
+/* ---------- Bottom: copyright + socials ---------- */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer__copy {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9aa1ab;
+}
+.footer__socials {
+  display: flex;
+  gap: 10px;
+}
+.footer__social {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  color: var(--c-muted);
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.footer__social:hover {
+  background: var(--c-blue);
+  border-color: var(--c-blue);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .footer__top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .footer__contact {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .footer__bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__links a,
+  .footer__social {
+    transition: none;
+  }
+}
