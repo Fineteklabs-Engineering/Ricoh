@@ -117,7 +117,7 @@ export default function WhyRicoh() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <img
-              src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786959166/kai-rohweder-9HX7uVUyefg-unsplash_gthhbp.jpg"
+              src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786971352/bank-phrom-Tzm3Oyu_6sk-unsplash_j08eab.jpg"
               alt="Using the Ricoh printer touch panel"
               onError={(e) => {
                 e.currentTarget.style.opacity = 0;
