@@ -101,7 +101,7 @@ export default function Navbar() {
             >
               <div className="nav-drawer__top">
                 <span className="nav-logo">
-                  <img src="/logo.png" alt="Ricoh" className="nav-logo__img" />
+                  <img src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786967459/b2fbfd8b-17a0-4b9b-8052-11bcc13b0aa8-removebg-preview_awlat9.png" alt="Ricoh" className="nav-logo__img" />
                 </span>
                 <button
                   className="nav-icon"
