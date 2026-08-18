@@ -1,34 +1,32 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FiSearch,
-  FiShoppingCart,
-  FiMenu,
-  FiX,
-  FiChevronDown,
-} from "react-icons/fi";
+import { NavLink, Link } from "react-router-dom";
+import { FiSearch, FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import "../styles/navbar.css";
 
+const LOGO =
+  "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786967459/b2fbfd8b-17a0-4b9b-8052-11bcc13b0aa8-removebg-preview_awlat9.png";
+
+
 const NAV_LINKS = [
-  { label: "Home", hasMenu: false },
-  { label: "Solutions", hasMenu: false },
-  { label: "Products", hasMenu: true },
-  { label: "Features", hasMenu: false },
-  { label: "Contact", hasMenu: false },
+  { label: "Home", to: "/" },
+  { label: "Solutions", to: null },
+  { label: "Products", to: "/products" },
+  { label: "Features", to: null },
+  { label: "Contact", to: null },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Shadow / solid background once the user scrolls past the hero top
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent the page from scrolling behind the open mobile drawer
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -45,17 +43,20 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <a href="#" className="nav-logo">
-          <img src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786967459/b2fbfd8b-17a0-4b9b-8052-11bcc13b0aa8-removebg-preview_awlat9.png" alt="Ricoh" className="nav-logo__img" />
-        </a>
+        <Link to="/" className="nav-logo">
+          <img src={LOGO} alt="Ricoh" className="nav-logo__img" />
+        </Link>
 
         <ul className="nav-links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a href="#">
-                {link.label}
-                {link.hasMenu && <FiChevronDown className="nav-links__caret" />}
-              </a>
+              {link.to ? (
+                <NavLink to={link.to} end={link.to === "/"}>
+                  {link.label}
+                </NavLink>
+              ) : (
+                <a href="#">{link.label}</a>
+              )}
             </li>
           ))}
         </ul>
@@ -100,9 +101,13 @@ export default function Navbar() {
               transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
             >
               <div className="nav-drawer__top">
-                <span className="nav-logo">
-                  <img src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786967459/b2fbfd8b-17a0-4b9b-8052-11bcc13b0aa8-removebg-preview_awlat9.png" alt="Ricoh" className="nav-logo__img" />
-                </span>
+                <Link
+                  to="/"
+                  className="nav-logo"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <img src={LOGO} alt="Ricoh" className="nav-logo__img" />
+                </Link>
                 <button
                   className="nav-icon"
                   onClick={() => setMenuOpen(false)}
@@ -120,9 +125,19 @@ export default function Navbar() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + i * 0.06 }}
                   >
-                    <a href="#" onClick={() => setMenuOpen(false)}>
-                      {link.label}
-                    </a>
+                    {link.to ? (
+                      <NavLink
+                        to={link.to}
+                        end={link.to === "/"}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {link.label}
+                      </NavLink>
+                    ) : (
+                      <a href="#" onClick={() => setMenuOpen(false)}>
+                        {link.label}
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>
