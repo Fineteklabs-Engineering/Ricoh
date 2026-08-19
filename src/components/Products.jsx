@@ -16,9 +16,9 @@ const PRODUCTS = [
   { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956008/51075a66-3869-4ab4-93ab-6c1d7b5c0c82-10.jpg_cqzqts.webp", category: "Office", name: "Ricoh Aficio MPC2551 A3 Color Laser MFP Printer", price: "KSh 75,000" },
   { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956071/072138b6-c94b-4c70-b0e7-afaafab313f1-10.jpg_xsyttx.webp", category: "Wide Format", name: "Ricoh Aficio MPC307 A4 Color Laser MFP Printer", price: "KSh 55,000" },
   { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956224/57851560-1035-4492-a236-17e0861bf440-10.jpg_s9ieuu.webp", category: "Desktop", name: "Ricoh Aficio MPC401 A4 MFP Color Laser Printer", price: "KSh 65,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956325/b09c567f-7881-4101-ac85-e80c8a33afcc-10.png_yemwls.webp", category: "Colour", name: "Ricoh M2700 A3 Mono Laser MFP Printer", price: "KSh 35,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956419/0e2eb525-5451-4feb-8c15-a880208ebfec-12.jpg_mlsfwu.webp", category: "MFP", name: "Ricoh IM 6000 A3 Mono Laser MFP", price: "KSh 100,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956481/2e77ce9d-454f-49c7-ac38-046ba570e3fd-12.png_ycgkzo.webp", category: "Office", name: "Ricoh MP 2555 A3 Mono Multifunction", price: "KSh 38,000" },
+  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956325/b09c567f-7881-4101-ac85-e80c8a33afcc-10.png_yemwls.webp", category: "Colour", name: "Ricoh M2700 A3 Mono Laser MFP Printer", price: "KSh 100,000" },
+  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956419/0e2eb525-5451-4feb-8c15-a880208ebfec-12.jpg_mlsfwu.webp", category: "MFP", name: "Ricoh IM 6000 A3 Mono Laser MFP", price: "KSh 135,000" },
+  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956481/2e77ce9d-454f-49c7-ac38-046ba570e3fd-12.png_ycgkzo.webp", category: "Office", name: "Ricoh SP5210sf A4 Mono Laser MFP Copier", price: "KSh 38,000" },
 ];
 
 export default function Products() {
