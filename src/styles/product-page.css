@@ -320,7 +320,7 @@
 }
 .pp-card__img {
   position: relative;
-  height: clamp(300px, 34vw, 460px);
+  height: clamp(360px, 40vw, 560px);
   padding: 28px;
   display: grid;
   place-items: center;
