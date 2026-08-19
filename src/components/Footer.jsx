@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
 import "../styles/footer.css";
 
-const LINKS = ["Solutions", "Products", "Services", "Support", "Contact"];
+const LINKS = ["Solutions", "products", "Services", "Support", "Contact"];
 const SOCIALS = [
   { Icon: FiFacebook, label: "Facebook", href: "#" },
   { Icon: FiTwitter, label: "Twitter", href: "#" },
@@ -32,7 +32,7 @@ export default function Footer() {
 
           <nav className="footer__links" aria-label="Footer">
             {LINKS.map((l) => (
-              <a href="#" key={l}>
+              <a href="" key={l}>
                 {l}
               </a>
             ))}

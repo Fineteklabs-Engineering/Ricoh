@@ -111,7 +111,7 @@ export default function MoreThanPrinter() {
           </div>
 
           {/* 📝 Change the label / link as needed */}
-          <a href="#quote" className="mtp__cta">
+          <a href="products" className="mtp__cta">
             Explore the range <FiArrowRight />
           </a>
         </div>

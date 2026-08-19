@@ -108,7 +108,7 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div className="hero__actions" variants={item}>
-            <a href="#products" className="hero__btn hero__btn--primary">
+            <a href="products" className="hero__btn hero__btn--primary">
               Explore Printers <FiArrowRight />
             </a>
             <a href="#quote" className="hero__btn hero__btn--ghost">

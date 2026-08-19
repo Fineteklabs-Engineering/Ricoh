@@ -62,7 +62,7 @@ export default function CTA() {
             <a href="#quote" className="cta__btn cta__btn--primary">
               Talk to an Expert <FiArrowRight />
             </a>
-            <a href="#products" className="cta__btn cta__btn--ghost">
+            <a href="products" className="cta__btn cta__btn--ghost">
               Explore Printers
             </a>
           </div>
