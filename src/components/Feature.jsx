@@ -5,20 +5,28 @@ export default function Feature() {
   return (
     <section className="feature">
       <div className="feature__content">
-        {/* 📝 Swap this paragraph for your own copy */}
-        <motion.p
-          className="feature__text"
+        <motion.h2
+          className="feature__title"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Work effortlessly with the Ricoh IM 3500 - a compact, intelligent
-          multifunction printer that delivers sharp, professional output with
-          fast, secure workflows, designed to keep pace with any modern office.
+          Color with Clarity, Print with Efficiency
+        </motion.h2>
+
+        <motion.p
+          className="feature__text"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+        >
+          Ricoh's colour laser range delivers sharp, true-to-life output and
+          fast, reliable printing for any workspace - so every document looks
+          professional and every job gets done quicker.
         </motion.p>
 
-  
         <motion.div
           className="feature__media"
           initial={{ opacity: 0, x: -80 }}
@@ -27,7 +35,7 @@ export default function Feature() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <img
-            src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1786953408/IM3500A504_tcm81-49937-removebg-preview_i3ghdd.png"
+            src="https://res.cloudinary.com/gjpfbvzb/image/upload/v1787232781/geri-sakti-CYrYxz-uvE4-unsplash_hdfvrp.jpg"
             alt="Ricoh printer in a modern workspace"
             onError={(e) => {
               e.currentTarget.style.opacity = 0;
@@ -36,7 +44,7 @@ export default function Feature() {
         </motion.div>
       </div>
 
-      {/* Bottom-left marker + two-line label */}
+      {/* Bottom-left stats (same position as before) */}
       <motion.div
         className="feature__marker"
         initial={{ opacity: 0, y: 12 }}
@@ -44,12 +52,18 @@ export default function Feature() {
         viewport={{ once: false, amount: 0.6 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
       >
-        <span className="feature__marker-dot" aria-hidden="true" />
-        <span className="feature__marker-label">
-          Reliable output
-          <br />
-          every single day
-        </span>
+        <div className="feature__stat">
+          <span className="feature__stat-value">10+ Years</span>
+          <span className="feature__stat-label">Industry Experience</span>
+        </div>
+        <div className="feature__stat">
+          <span className="feature__stat-value">500+</span>
+          <span className="feature__stat-label">Printers Deployed</span>
+        </div>
+        <div className="feature__stat">
+          <span className="feature__stat-value">Genuine</span>
+          <span className="feature__stat-label">Parts &amp; Toners Only</span>
+        </div>
       </motion.div>
     </section>
   );
