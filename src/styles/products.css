@@ -1,17 +1,16 @@
-/* Uses the shared :root tokens (index.css / Navbar.css) */
 
 .products {
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: #f1f9fe; /* very light tint of --c-blue (#00aeef) */
+  
   padding: clamp(56px, 8vw, 96px) 0;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 .products__inner {
   width: 100%;
-  padding: 0 clamp(48px, 10vw, 120px); /* increased left/right padding */
+  padding: 0 clamp(48px, 10vw, 120px); 
 }
 
 /* ---------- Header + controls ---------- */
@@ -47,10 +46,10 @@
   height: 48px;
   display: grid;
   place-items: center;
-  background: #fff;
+  background: var(--c-blue);
   border: 1px solid var(--c-line);
   border-radius: 50%;
-  color: var(--c-ink);
+  color: white;
   font-size: 1.35rem;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);

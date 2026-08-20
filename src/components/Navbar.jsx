@@ -126,8 +126,19 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-actions">
+          {/* Desktop: search box (opens the slide-down search) */}
           <button
-            className="nav-icon"
+            className="nav-searchbox"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+          >
+           
+            <span>Search printers...</span>
+             <FiSearch />
+          </button>
+          {/* Mobile: search icon */}
+          <button
+            className="nav-icon nav-icon--search"
             aria-label="Search"
             onClick={() => setSearchOpen(true)}
           >

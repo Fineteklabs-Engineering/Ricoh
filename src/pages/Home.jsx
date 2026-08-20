@@ -9,8 +9,9 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <Feature />
+      
       <Products />
+      <Feature />
       <MoreThanPrinter />
       <WhyRicoh />
       <CTA />

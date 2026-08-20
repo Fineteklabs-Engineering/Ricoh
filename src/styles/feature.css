@@ -6,6 +6,7 @@
   padding: clamp(64px, 10vw, 130px) clamp(16px, 4vw, 40px);
   background: var(--c-white);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: #f1f9fe; 
 }
 
 
