@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FiChevronDown,
@@ -16,8 +17,7 @@ const parsePrice = (p) => Number(String(p).replace(/[^\d]/g, ""));
 const formatKSh = (n) => "KSh " + n.toLocaleString();
 const uniq = (arr) => [...new Set(arr)];
 
-
-const ALL_OPTIONS = ["All"]; 
+const ALL_OPTIONS = ["All"];
 const CONDITIONS = uniq(PRODUCTS.map((p) => p.condition));
 const FUNCTIONS = uniq(PRODUCTS.map((p) => p.function));
 const TYPES = uniq(PRODUCTS.map((p) => p.type));
@@ -28,7 +28,6 @@ const SPEEDS = uniq(PRODUCTS.map((p) => p.printSpeed)).sort(
 const PRICE_MIN = Math.min(...PRODUCTS.map((p) => parsePrice(p.price)));
 const PRICE_MAX = Math.max(...PRODUCTS.map((p) => parsePrice(p.price)));
 const PRICE_STEP = 5000;
-
 
 function FilterGroup({ title, field, options, selected, onToggle, open, onOpen }) {
   return (
@@ -84,7 +83,6 @@ export default function ProductsPage() {
   });
   const [showFilters, setShowFilters] = useState(false);
 
- 
   const toggle = (field, value) =>
     setSel((s) => ({
       ...s,
@@ -144,7 +142,6 @@ export default function ProductsPage() {
     <section className="pp">
       <h1 className="pp__title">Ricoh Printers</h1>
 
-     
       <button
         type="button"
         className="pp__filters-toggle"
@@ -386,13 +383,20 @@ export default function ProductsPage() {
                   <button className="pp-card__eye" type="button" aria-label="Quick view">
                     <FiEye />
                   </button>
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    onError={(e) => {
-                      e.currentTarget.style.opacity = 0;
-                    }}
-                  />
+                  {/* Image links to the product page */}
+                  <Link
+                    to={`/products/${p.id}`}
+                    className="pp-card__img-link"
+                    aria-label={p.name}
+                  >
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      onError={(e) => {
+                        e.currentTarget.style.opacity = 0;
+                      }}
+                    />
+                  </Link>
                   <button className="pp-card__cart" type="button">
                     Add to cart
                   </button>
@@ -408,7 +412,10 @@ export default function ProductsPage() {
                       <FiHeart />
                     </button>
                   </div>
-                  <h3 className="pp-card__name">{p.name}</h3>
+                  {/* Title links to the product page */}
+                  <Link to={`/products/${p.id}`} className="pp-card__name-link">
+                    <h3 className="pp-card__name">{p.name}</h3>
+                  </Link>
                   <span className="pp-card__price">{p.price}</span>
                 </div>
               </motion.article>

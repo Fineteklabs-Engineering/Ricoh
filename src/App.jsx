@@ -2,14 +2,17 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetail from "./pages/ProductDetail";
 
 export default function App() {
   return (
     <Routes>
-     <Route element={<Layout />}>
+    
+      <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="products" element={<ProductsPage />} />
-     </Route>
+        <Route path="products/:id" element={<ProductDetail />} />
+      </Route>
     </Routes>
   );
 }

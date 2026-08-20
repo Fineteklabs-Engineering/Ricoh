@@ -1,0 +1,107 @@
+/* Uses the shared :root tokens (index.css / Navbar.css) */
+
+.ai {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 4vw, 40px);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Tabs ---------- */
+.ai__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 36px);
+  border-bottom: 1px solid var(--c-line);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+.ai__tab {
+  position: relative;
+  padding: 0 0 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  transition: color 0.2s ease;
+}
+.ai__tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--c-blue);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.ai__tab:hover {
+  color: var(--c-ink);
+}
+.ai__tab.is-active {
+  color: var(--c-blue);
+}
+.ai__tab.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Panel ---------- */
+.ai__heading {
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  color: var(--c-ink);
+  margin: 0 0 18px;
+}
+
+/* Specs table */
+.ai__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+}
+.ai__table th,
+.ai__table td {
+  border: 1px solid var(--c-line);
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+  color: var(--c-ink);
+}
+.ai__table th {
+  width: 42%;
+  font-weight: 700;
+}
+.ai__table td {
+  color: var(--c-muted);
+}
+/* striped variant for the Additional information tab */
+.ai__table--striped th,
+.ai__table--striped td {
+  border-left: none;
+  border-right: none;
+}
+.ai__table--striped tr:nth-child(even) {
+  background: var(--c-bg);
+}
+
+.ai__subhead {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-ink);
+  margin: 0 0 12px;
+}
+.ai__desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--c-muted);
+  margin: 0;
+  max-width: 900px;
+}
+.ai__empty {
+  font-size: 0.95rem;
+  color: var(--c-muted);
+  margin: 0;
+}

@@ -459,7 +459,21 @@
   -webkit-line-clamp: 3;
 }
 
-/* ---------- Responsive ---------- */
+.pp-card__img-link {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+.pp-card__name-link {
+  text-decoration: none;
+  color: inherit;
+}
+.pp-card__name-link:hover .pp-card__name {
+  color: var(--c-blue);
+}
+
+/* Responsive ---------- */
 @media (max-width: 900px) {
   .pp__body {
     grid-template-columns: 1fr;
