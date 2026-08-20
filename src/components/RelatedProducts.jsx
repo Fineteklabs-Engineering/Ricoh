@@ -20,8 +20,7 @@ export default function RelatedProducts({ currentId }) {
       <motion.div
         className="rp__grid"
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        animate="show"
         variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
       >
         {related.map((p) => (

@@ -32,7 +32,7 @@ export default function ProductDetail() {
     <>
       <Detail product={product} />
       <AdditionalInfo product={product} />
-      <RelatedProducts currentId={product.id} />
+      <RelatedProducts key={product.id} currentId={product.id} />
     </>
   );
 }

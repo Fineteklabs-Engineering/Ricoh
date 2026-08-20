@@ -15,11 +15,8 @@ export default function AdditionalInfo({ product }) {
     { label: "Type", value: product.type },
     { label: "Print Speed", value: product.printSpeed },
     { label: "Function", value: product.function },
-    { label: "Paper Size", value: "SRA3/A3/A4/A5/A6" },
-    { label: "Adf", value: "YES" },
     { label: "Duplex", value: "YES" },
     { label: "Connectivity", value: "Network/USB" },
-    { label: "Resolution", value: "1200×1200" },
   ];
 
   const description = `The ${product.name} is a versatile office machine built to simplify how teams handle everyday document management. It delivers ${product.type.toLowerCase()} output at ${product.printSpeed}, combining ${product.function.toLowerCase()} in a single device — reliable, efficient, and ready for any workspace.`;
