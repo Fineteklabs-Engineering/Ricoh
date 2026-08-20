@@ -27,14 +27,12 @@ export default function Navbar() {
     setQuery("");
   };
 
-  // Shadow / solid background once the user scrolls past the hero top
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the drawer or search overlay is open
   useEffect(() => {
     document.body.style.overflow = menuOpen || searchOpen ? "hidden" : "";
     return () => {
@@ -42,7 +40,6 @@ export default function Navbar() {
     };
   }, [menuOpen, searchOpen]);
 
-  // Close search on Escape
   useEffect(() => {
     if (!searchOpen) return;
     const onKey = (e) => {
@@ -75,17 +72,57 @@ export default function Navbar() {
         </Link>
 
         <ul className="nav-links">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              {link.to ? (
-                <NavLink to={link.to} end={link.to === "/"}>
-                  {link.label}
-                </NavLink>
-              ) : (
-                <a href="#">{link.label}</a>
-              )}
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isProducts = link.label === "Products";
+            return (
+              <li key={link.label} className={isProducts ? "nav-has-mega" : undefined}>
+                {link.to ? (
+                  <NavLink to={link.to} end={link.to === "/"}>
+                    {link.label}
+                  </NavLink>
+                ) : (
+                  <a href="#">{link.label}</a>
+                )}
+
+                {isProducts && (
+                  <div className="nav-mega">
+                    <div className="nav-mega__col">
+                      <h4 className="nav-mega__title">By Condition</h4>
+                      <Link
+                        to={`/products?condition=${encodeURIComponent("New Printers")}`}
+                        className="nav-mega__link"
+                      >
+                        New Printers
+                      </Link>
+                      <Link
+                        to={`/products?condition=${encodeURIComponent(
+                          "Refurbished Printers"
+                        )}`}
+                        className="nav-mega__link"
+                      >
+                        Refurbished Printers
+                      </Link>
+                    </div>
+                    <div className="nav-mega__col">
+                      <h4 className="nav-mega__title">By Color</h4>
+                      <Link
+                        to={`/products?type=${encodeURIComponent("Mono Laser")}`}
+                        className="nav-mega__link"
+                      >
+                        Mono Laser
+                      </Link>
+                      <Link
+                        to={`/products?type=${encodeURIComponent("Color Laser")}`}
+                        className="nav-mega__link"
+                      >
+                        Color Laser
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="nav-actions">

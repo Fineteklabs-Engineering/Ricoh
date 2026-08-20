@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FiChevronDown,
@@ -60,14 +60,18 @@ function FilterGroup({ title, field, options, selected, onToggle, open, onOpen }
 }
 
 export default function ProductsPage() {
-  const [sel, setSel] = useState({
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [sel, setSel] = useState(() => ({
     category: [],
-    condition: [],
+    condition: searchParams.get("condition")
+      ? [searchParams.get("condition")]
+      : [],
     printSpeed: [],
     model: [],
-    type: [],
+    type: searchParams.get("type") ? [searchParams.get("type")] : [],
     function: [],
-  });
+  }));
   const [price, setPrice] = useState({ min: PRICE_MIN, max: PRICE_MAX });
   const [draft, setDraft] = useState({ min: PRICE_MIN, max: PRICE_MAX });
   const [sort, setSort] = useState("relevance");
@@ -82,6 +86,19 @@ export default function ProductsPage() {
     price: true,
   });
   const [showFilters, setShowFilters] = useState(false);
+
+  // Keep the condition/type filters in sync with the URL query — e.g. the
+  // navbar "New Printers" / "Mono Laser" links. Also covers clicking those
+  // links while already on this page (the query changes without a remount).
+  useEffect(() => {
+    const condition = searchParams.get("condition");
+    const type = searchParams.get("type");
+    setSel((s) => ({
+      ...s,
+      condition: condition ? [condition] : [],
+      type: type ? [type] : [],
+    }));
+  }, [searchParams]);
 
   const toggle = (field, value) =>
     setSel((s) => ({
@@ -133,6 +150,7 @@ export default function ProductsPage() {
     setPrice({ min: PRICE_MIN, max: PRICE_MAX });
     setDraft({ min: PRICE_MIN, max: PRICE_MAX });
     setSort("relevance");
+    setSearchParams({});
   };
 
   const minPct = ((draft.min - PRICE_MIN) / (PRICE_MAX - PRICE_MIN)) * 100;

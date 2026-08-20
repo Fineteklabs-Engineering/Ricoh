@@ -344,6 +344,66 @@
   color: var(--c-muted);
 }
 
+/* Products mega dropdown (desktop hover)  */
+.nav-has-mega {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--nav-h); 
+}
+.nav-mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  gap: clamp(28px, 4vw, 56px);
+  padding: 24px 30px;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: 14px;
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 120;
+}
+.nav-has-mega:hover .nav-mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-mega__col {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+.nav-mega__title {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--c-ink);
+  white-space: nowrap;
+}
+.nav-mega .nav-mega__link {
+  padding: 8px 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--c-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-mega .nav-mega__link::after {
+  display: none;
+}
+.nav-mega .nav-mega__link:hover {
+  color: var(--c-blue);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .nav-links,
