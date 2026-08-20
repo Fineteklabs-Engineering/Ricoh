@@ -1,32 +1,15 @@
 import { useRef, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { PRODUCTS } from "../data/products";
 import "../styles/products.css";
-
-
-const PRODUCTS = [
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955250/9cb19efc-f9a1-430b-9b1d-bb92bac572af-16.jpg_1_sr0dv7.webp", category: "MFP", name: "Ricoh Aficio IM3500 A3 Mono Laser MFP Printer", price: "KSh 420,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955340/c096f0bc-76c5-486b-9138-8dc455f7cb3e-17.jpg_tab1te.webp", category: "Production", name: "Ricoh Aficio IM4000A A3 Mono Laser MFP Printer", price: "KSh 525,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955461/a2f91a72-d91f-4732-affa-23253b069eac-10.jpg_lz0ocg.webp", category: "Office", name: "Ricoh Aficio MP C2003 A3 Color Laser MFP Printer", price: "KSh 65,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955555/35c726ec-6d5d-4e73-a88b-d695701bf2bc-9.jpg_v08hc0.webp", category: "Colour", name: "Ricoh Aficio MP C2504 A3 Color Laser MFP Printer", price: "KSh 75,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955617/117143d0-d615-4852-969c-1cbcbd91c101-9.jpg_erxwzk.webp", category: "MFP", name: "Ricoh Aficio MP C6003 A3 Color Laser MFP Printer", price: "KSh 135,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955746/d5f14fce-3a99-43a2-94b5-1a5278f58b97-10.jpg_qwrghr.webp", category: "Desktop", name: "Ricoh Aficio MPC 2051 A3 Color Laser MFP Printer", price: "KSh 70,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955824/ea9ae4ec-8204-4d13-83c7-8c099a8cf33b-9.jpg_vexz9v.webp", category: "Colour", name: "Ricoh Aficio MPC2004 A3 Color Laser MFP Printer", price: "KSh 70,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786955887/6c07c090-383e-4c3e-84c6-d731d1ec4eea-7-600x600.png_mvwqqf.webp", category: "Production", name: "Ricoh Aficio MPC2503 A3 Color Laser MFP Printer", price: "KSh 70,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956008/51075a66-3869-4ab4-93ab-6c1d7b5c0c82-10.jpg_cqzqts.webp", category: "Office", name: "Ricoh Aficio MPC2551 A3 Color Laser MFP Printer", price: "KSh 75,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956071/072138b6-c94b-4c70-b0e7-afaafab313f1-10.jpg_xsyttx.webp", category: "Wide Format", name: "Ricoh Aficio MPC307 A4 Color Laser MFP Printer", price: "KSh 55,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956224/57851560-1035-4492-a236-17e0861bf440-10.jpg_s9ieuu.webp", category: "Desktop", name: "Ricoh Aficio MPC401 A4 MFP Color Laser Printer", price: "KSh 65,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956325/b09c567f-7881-4101-ac85-e80c8a33afcc-10.png_yemwls.webp", category: "Colour", name: "Ricoh M2700 A3 Mono Laser MFP Printer", price: "KSh 100,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956419/0e2eb525-5451-4feb-8c15-a880208ebfec-12.jpg_mlsfwu.webp", category: "MFP", name: "Ricoh IM 6000 A3 Mono Laser MFP", price: "KSh 135,000" },
-  { image: "https://res.cloudinary.com/gjpfbvzb/image/upload/v1786956481/2e77ce9d-454f-49c7-ac38-046ba570e3fd-12.png_ycgkzo.webp", category: "Office", name: "Ricoh SP5210sf A4 Mono Laser MFP Copier", price: "KSh 38,000" },
-];
 
 export default function Products() {
   const trackRef = useRef(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
 
-  // Dim the arrows at each end so users aren't clicking into nothing
   const updateArrows = useCallback(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -46,7 +29,6 @@ export default function Products() {
     };
   }, [updateArrows]);
 
-  // Page by ~one screenful of cards; scroll-snap lands it on a card edge
   const scrollByPage = (dir) => {
     const el = trackRef.current;
     if (!el) return;
@@ -109,24 +91,33 @@ export default function Products() {
           {PRODUCTS.map((p, i) => (
             <motion.article
               className={`products__card ${i === 0 ? "products__card--peek" : ""}`}
-              key={i}
+              key={p.id}
               variants={card}
             >
               <div className="products__card-img">
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  onError={(e) => {
-                    e.currentTarget.style.opacity = 0;
-                  }}
-                />
-                {/* Pink Add to Cart — appears on card hover (always shown on the first card) */}
+                {/* Image links to the product page */}
+                <Link
+                  to={`/products/${p.id}`}
+                  className="products__card-img-link"
+                  aria-label={p.name}
+                >
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    onError={(e) => {
+                      e.currentTarget.style.opacity = 0;
+                    }}
+                  />
+                </Link>
                 <button className="products__card-cart" type="button">
                   Add to Cart
                 </button>
               </div>
               <div className="products__card-body">
-                <h3 className="products__card-name">{p.name}</h3>
+                {/* Title links to the product page */}
+                <Link to={`/products/${p.id}`} className="products__card-name-link">
+                  <h3 className="products__card-name">{p.name}</h3>
+                </Link>
                 <span className="products__card-price">{p.price}</span>
               </div>
             </motion.article>

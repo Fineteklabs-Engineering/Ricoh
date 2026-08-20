@@ -193,6 +193,17 @@
   color: var(--c-ink);
 }
 
+.products__card-img-link {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+.products__card-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .products__head {
