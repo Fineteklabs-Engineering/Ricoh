@@ -239,6 +239,111 @@
   color: var(--c-blue);
 }
 
+/* ---------- Search overlay ---------- */
+.nav-search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 13, 18, 0.4);
+  z-index: 130;
+}
+.nav-search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 140;
+  background: #fff;
+  padding: clamp(16px, 3vw, 28px) clamp(16px, 4vw, 40px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+.nav-search__bar {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-search__input {
+  flex: 1;
+  height: 52px;
+  padding: 0 22px;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  font-size: 1rem;
+  color: var(--c-ink);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.nav-search__input:focus {
+  border-color: var(--c-blue);
+}
+.nav-search__close {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--c-line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--c-ink);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-search__close:hover {
+  background: var(--c-bg);
+  color: var(--c-blue);
+}
+.nav-search__results {
+  max-width: 900px;
+  margin: 16px auto 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-search__result {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.nav-search__result:hover {
+  background: var(--c-bg);
+}
+.nav-search__result img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.nav-search__result-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.nav-search__result-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.nav-search__result-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-blue);
+}
+.nav-search__empty {
+  max-width: 900px;
+  margin: 16px auto 0;
+  text-align: center;
+  color: var(--c-muted);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .nav-links,
