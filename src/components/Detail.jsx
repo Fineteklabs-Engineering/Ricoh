@@ -14,7 +14,7 @@ export default function Detail({ product }) {
   return (
     <section className="pd">
       <div className="pd__top">
-        {/* Left — image */}
+       
         <motion.div
           className="pd__media"
           initial={{ opacity: 0, x: -30 }}
@@ -30,7 +30,7 @@ export default function Detail({ product }) {
           />
         </motion.div>
 
-        {/* Right — summary + actions */}
+       
         <motion.div
           className="pd__info"
           initial={{ opacity: 0, x: 30 }}

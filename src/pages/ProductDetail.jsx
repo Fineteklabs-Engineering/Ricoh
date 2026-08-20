@@ -15,6 +15,7 @@ export default function ProductDetail() {
           textAlign: "center",
           padding: "clamp(60px, 12vh, 140px) clamp(16px, 4vw, 40px)",
           fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+       
         }}
       >
         <h1 style={{ color: "#0b0d12", margin: "0 0 10px" }}>Product not found</h1>

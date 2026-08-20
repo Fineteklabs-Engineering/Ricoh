@@ -171,6 +171,10 @@
 @media (max-width: 900px) {
   .rp__grid {
     grid-template-columns: repeat(2, 1fr);
+  
+  }
+  .rp-card__img{
+    height: clamp(400px, 55vw, 520px);
   }
 }
 @media (max-width: 480px) {

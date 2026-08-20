@@ -1,4 +1,4 @@
-/* Uses the shared :root tokens (index.css / Navbar.css) */
+
 
 .pd {
   max-width: var(--maxw);
@@ -6,6 +6,7 @@
   padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 40px)
     clamp(32px, 5vw, 56px);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
+
 }
 
 .pd__top {
@@ -15,7 +16,7 @@
   align-items: start;
 }
 
-/* ---------- Left: image (enlarged) ---------- */
+
 .pd__media {
   display: grid;
   place-items: center;
@@ -31,7 +32,7 @@
   object-fit: contain;
 }
 
-/* ---------- Right: info ---------- */
+
 .pd__cat {
   font-size: 0.8rem;
   font-weight: 700;
@@ -180,7 +181,7 @@
   border-color: var(--c-pink);
 }
 
-/* ---------- Responsive ---------- */
+
 @media (max-width: 860px) {
   .pd__top {
     grid-template-columns: 1fr;
