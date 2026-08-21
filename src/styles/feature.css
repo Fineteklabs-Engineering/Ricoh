@@ -35,7 +35,7 @@
   aspect-ratio: 16 / 9;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--c-bg); /* neutral box before/without an image */
+  background: var(--c-bg); 
   box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
 }
 .feature__media img {
