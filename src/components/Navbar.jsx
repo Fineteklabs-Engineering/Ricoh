@@ -10,7 +10,7 @@ const LOGO =
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
-  { label: "Solutions", to: null },
+  { label: "Services", to: null },
   { label: "Products", to: "/products" },
   { label: "Features", to: null },
   { label: "Contact", to: null },
